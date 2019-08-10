@@ -206,9 +206,9 @@ $venvDir = "C:\ProgramData\Anaconda3\envs\tf_test"
 } else {
     .\venv\Scripts\Activate.ps1
 } #>
-pip3 install six numpy wheel
-pip3 install keras_applications==1.0.5 --no-deps
-pip3 install keras_preprocessing==1.0.3 --no-deps
+pip install six numpy wheel
+pip install keras_applications==1.0.5 --no-deps
+pip install keras_preprocessing==1.0.3 --no-deps
 Set-Location $sourceDir
 
 if (!$ReserveSource) {
@@ -220,7 +220,7 @@ if (!$ReserveSource) {
 $ENV:PYTHON_BIN_PATH = "$VenvDir/python.exe" -replace "[\\]", "/"
 $ENV:PYTHON_LIB_PATH = "$VenvDir/lib/site-packages" -replace "[\\]", "/"
 
-py configure.py
+python configure.py
 
 # Build
 Invoke-Expression ("bazel build " + $BazelBuildParameters)
