@@ -35,4 +35,6 @@ cpu版本的编译为下一步编译gpu版本铺垫了基础，在编译过程�
 在编译cpu的基础上，编译gpu版本时仍需注意如下问题：
 * 测试编译whl文件时未能成功编译，理论上只需将编译选项中`-BazelBuildParameters`的最后一项修改为`//tensorflow/tools/pip_package:build_pip_package`，但编译未通过，提示问题为DLL文件加载失败，可能的原因为bazel与cuda，cudnn版本不匹配（测试版本为bazel 0.21.0， cuda v10.0， cudnn 7.6.2）
 * 在编译过程中需要注意网络连接通畅，最好可以接入外网
+* 利用当前脚本编译生成的include文件并不完全，只能满足最简单的测试功能，如需要更完善的include目录，请下载include.tar(待上传)
+* 在visual studio中测试编译出的dll时，除添加库文件，引用文件位置及添加链接器外，还需注意修改“属性 - C/C++ - 预处理器 - 预处理器定义”处，添加“NOMINMAX”选项
 
