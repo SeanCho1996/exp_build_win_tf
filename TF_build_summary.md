@@ -1,0 +1,38 @@
+# Tensorflow .whl及.dll在windows环境下编译总结
+## Tensorflow-cpu
+测试了tensorflow-cpu whl文件的编译
+
+### 系统环境：
+* Windows 10
+* Anaconda: 4.7.10
+* Python: 3.6.7
+* ~~CUDA: 10.0~~
+* ~~CUDNN: 7.6.1~~
+* Tensorflow: 1.9.1 cpu
+* bazel: 0.16.0
+* msvc: 2015 update 3
+
+### 编译流程：
+cpu版本的编译较为简单，请直接参阅[tensorflow官方文档](https://tensorflow.google.cn/install/source_windows "tensorflow官方文档")
+
+### 编译总结：
+cpu版本的编译为下一步编译gpu版本铺垫了基础，在编译过程中需要注意如下问题
+* 执行编译的主机用户名中不能包含空格（bazel的编译实际上在`C:/users/用户名`中进行，bazel无法识别含空格的编译路径）
+* MSVC2015建议安装完整的Visual Studio， 而不是只安装build tool
+* bazel版本一定要注意匹配，过高或过低都无法完成编译
+
+## Tensorflow-gpu
+测试了tensorflow-gpu dll，whl文件的编译
+
+### 系统环境：
+请参阅[TF_build_from_source_on_windows.md](https://github.com/7oud/exp_build_win_tf/blob/master/TF_build_from_source_on_windows.md "TF_build_from_source_on_windows.md")
+
+### 编译流程：
+请参阅[TF_build_from_source_on_windows.md](https://github.com/7oud/exp_build_win_tf/blob/master/TF_build_from_source_on_windows.md "TF_build_from_source_on_windows.md")
+
+### 编译总结：
+此编译脚本引用自[guikarist](https://github.com/guikarist "guikarist")，更完整的编译流程请参阅[ta的原创脚本](https://github.com/guikarist/tensorflow-windows-build-script)
+在编译cpu的基础上，编译gpu版本时仍需注意如下问题：
+* 测试编译whl文件时未能成功编译，理论上只需将编译选项中`-BazelBuildParameters`的最后一项修改为`//tensorflow/tools/pip_package:build_pip_package`，但编译未通过，提示问题为DLL文件加载失败，可能的原因为bazel与cuda，cudnn版本不匹配（测试版本为bazel 0.21.0， cuda v10.0， cudnn 7.6.2）
+* 在编译过程中需要注意网络连接通畅，最好可以接入外网
+
