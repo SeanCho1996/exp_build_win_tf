@@ -56,7 +56,8 @@ public:
 		//auto csm = csm_tensor.flat<complex64>();
 		//auto reg = reg_tensor.flat<float>();
 		//auto rcm = rcm_tensor->flat<complex64>();
-
+		
+		// Convert tensor to Eigen::tensormap and compress dimensions
 		auto csm = csm_tensor.flat_inner_dims<complex64, 2>();
 		auto reg = reg_tensor.flat_inner_dims<float, 1>();
 		auto rcm = rcm_tensor->flat_inner_dims<complex64, 2>();
@@ -79,7 +80,8 @@ public:
 
 		int layer = csm.dimensions()[0];
 		int length = csm.dimensions()[1];
-
+		
+		// Map tensormap to Eigen::Matrix
 		Eigen::Map<const Eigen::MatrixXcf> csm_map(csm.data(), length, layer); // input matrix (16 * 233472)
 		Eigen::Map<Eigen::MatrixXcf> rcm_map(rcm.data(), length, layer); // ouput matrix (16 * 233472)
 
