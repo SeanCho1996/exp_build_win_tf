@@ -37,6 +37,7 @@ cpu版本的编译为下一步编译gpu版本铺垫了基础，在编译过程�
 * 在编译过程中需要注意网络连接通畅，最好可以接入外网
 * 利用当前脚本编译生成的include文件并不完全，只能满足最简单的测试功能，如需要更完善的include目录，请下载include.tar(待上传)
 * 在visual studio中测试编译出的dll时，除添加库文件，引用文件位置及添加链接器外，还需注意修改“属性 - C/C++ - 预处理器 - 预处理器定义”处，添加“NOMINMAX”选项
+* 在编译中途失败，或需要重新编译时，注意添加`-ReserveSource`编译选项已保存之前编译的部分结果
 
 ## Q&A
 * Q: 脚本调用git命令时出现`BUG: run-command.c:500: disabling cancellation: Invalid argument`？
