@@ -31,7 +31,7 @@ cpu版本的编译为下一步编译gpu版本铺垫了基础，在编译过程�
 请参阅[TF_build_from_source_on_windows.md](https://github.com/7oud/exp_build_win_tf/blob/master/TF_build_from_source_on_windows.md "TF_build_from_source_on_windows.md")
 
 ### 编译总结：
-此编译脚本引用自[guikarist](https://github.com/guikarist "guikarist")，更完整的编译流程请参阅[ta的原创脚本](https://github.com/guikarist/tensorflow-windows-build-script)
+此编译脚本引用自[guikarist](https://github.com/guikarist "guikarist")，更完整的编译流程请参阅[ta的原创脚本](https://github.com/guikarist/tensorflow-windows-build-script)</br>
 在编译cpu的基础上，编译gpu版本时仍需注意如下问题：
 * 测试编译whl文件时未能成功编译，理论上只需将编译选项中`-BazelBuildParameters`的最后一项修改为`//tensorflow/tools/pip_package:build_pip_package`，但编译未通过，提示问题为DLL文件加载失败，可能的原因为bazel与cuda，cudnn版本不匹配（测试版本为bazel 0.21.0， cuda v10.0， cudnn 7.6.2）
 * 在编译过程中需要注意网络连接通畅，最好可以接入外网
@@ -45,5 +45,5 @@ A： 运行MSYS2.exe，无需在MSYS命令行输入任何指令，保持该窗�
 * Q：在编译过程中，出现类似`error loading package '': Encountered error while reading extension file 'repositories/repositories.bzl': no such package '@io_bazel_rules_docker//repositories':`的error？</br>
 A： 在load package阶段出现类似错误通常原因为网络连接不稳定，建议更换网络或连接VPN后重新尝试编译
 * Q：编译出的tensorflow c++ API不能调用第三方库（如libprotobuf)？</br>
-A： 当前版本tensorflow环境（1.31.1）下，第三方库文件只能与其源代码一同编译使用，直接链接.lib或.a文件无法使用（[reference](https://github.com/guikarist/tensorflow-windows-build-script/issues/21)）
+A： 当前版本tensorflow环境（1.13.1）下，第三方库文件只能与其源代码一同编译使用，直接链接.lib或.a文件无法使用（[reference](https://github.com/guikarist/tensorflow-windows-build-script/issues/21)）
 
