@@ -15,7 +15,7 @@
 
 ## Q&A
 * Q： 编译出的dll文件怎样在c++中调用？</br>
-A： 暂时未找到成功在c++中调用custom op dll的方式，找到[可参考的解决方案](https://stackoverflow.com/questions/50125889/c-tensorflow-api-with-tensorrt/50449271#50449271)，但执行仍不成功
+A： 暂时未找到成功在c++中调用custom op dll的方式，找到[可参考的解决方案1（利用TF的loadlibrary）](https://stackoverflow.com/questions/50125889/c-tensorflow-api-with-tensorrt/50449271#50449271)，[可参考的解决方案2（利用windows的loadlibrary）](https://www.cnblogs.com/seanyan/p/10042564.html)但执行仍不成功
 
 # add helpful link url here
 [How to run custom GPU tensorflow::op from C++ code?](https://www.e-learn.cn/content/wangluowenzhang/995785)
