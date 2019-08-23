@@ -31,3 +31,4 @@ __gpu部分__
 [Eigen 官方网站](http://eigen.tuxfamily.org/index.php?title=Main_Page#Documentation)</br>
 [Eigen unsupported module](http://eigen.tuxfamily.org/dox/unsupported/index.html)</br>
 [Eigen operations (compare with Matlab)](https://blog.csdn.net/xuezhisdc/article/details/54645238)</br>
+[EIGEN_DEFAULT_DENSE_INDEX_TYPE默认类型std::ptrdiff_t](https://en.cppreference.com/w/cpp/types/ptrdiff_t)</br>
