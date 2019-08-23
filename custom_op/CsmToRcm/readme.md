@@ -17,7 +17,8 @@ __gpu部分__
 
 ## Eigen矩阵运算的分析
 在之前的测试工程中由于情况相对简单，运算量较小，所以运行无误，当前项目数据结构略复杂，运算量相对较大，因而发现了许多问题：</br>
-* Cuda内核不支持4*4以上规模的矩阵逆运算（测试结果显示，但未找到官方证实），查找到部分资料，但测试结果仍不理想:</br>
+* eigen矩阵内部默认为列组序，由tensormap向matrix转换时需要注意元素排列的方式（可以通过添加Eigen::Matrix::RowMajor修改为行组序）
+* Cuda内核不支持4*4以上规模的矩阵逆运算（测试结果显示，但未找到官方证实），查找到部分资料，怀疑问题为cuda int型变量（32位）与host端int型变量（64位）不匹配，尝试基于此问题调整代码，但测试结果仍不理想:</br>
 	[Eigen cuda support](http://eigen.tuxfamily.org/dox/TopicCUDA.html)</br>
 	[EIGEN_DEFAULT_DENSE_INDEX_TYPE explication](https://stackoverflow.com/questions/39685899/overload-resolution-of-eigens-operator-when-wrapping-it-with-boost-python/39691267#39691267)</br>
 	[CUDA kernel can't support 8*8 eigen matrix assignment?](https://stackoverflow.com/questions/57504283/cuda-kernel-cant-support-88-eigen-matrix-assignment)</br>
