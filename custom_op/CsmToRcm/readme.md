@@ -25,8 +25,9 @@ __gpu部分__
 	[CUDA kernel can't support 8*8 eigen matrix assignment?](https://stackoverflow.com/questions/57504283/cuda-kernel-cant-support-88-eigen-matrix-assignment)</br>
 * Cuda内核似乎不支持复数矩阵求逆的操作（待核实）
 * 发现eigen矩阵运算会占用cuda线程，kernel内部矩阵运算操作越多，可用的cuda线程就越少，解决方案为循环调用线程
+* eigen延迟运算机制导致一些操作如果没有输出赋值，则该操作将不会被运算（如inverse，dot等）
 
-## usefel url link
+## useful url link
 [Eigen 官方网站](http://eigen.tuxfamily.org/index.php?title=Main_Page#Documentation)</br>
 [Eigen unsupported module](http://eigen.tuxfamily.org/dox/unsupported/index.html)</br>
 [Eigen operations (compare with Matlab)](https://blog.csdn.net/xuezhisdc/article/details/54645238)</br>
