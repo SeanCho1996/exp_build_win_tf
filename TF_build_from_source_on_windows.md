@@ -33,7 +33,7 @@ pacman –S git patch unzip
 
 5. 安装[Visual studio C++生成工具](https://visualstudio.microsoft.com/zh-hans/vs/older-downloads)，虽然生成工具可以独立安装，但这里建议安装完整的Visual studio 2015（对于将要安装的Tensorflow_gpu-1.13.1，此流程经测试确认可用的VS版本为VS 2015），安装时注意勾选通用 **Windows应用开发工具**->**Tools和Windows10 SDK** 以及 **通用工具**->**Visual Studio扩展性工具Update3**
 
-6. ~~搭建适用于windows **powershell** anaconda虚拟环境并激活~~，经测试4.7版本的Anaconda安装时可以提供 powershell 提示符，无需额外设置。
+6. 4.7及以上版本的Anaconda安装时可以提供`powershell`提示符，可以直接运行`ps1`文件，无需额外设置。
 
 
 # 编译过程
@@ -53,12 +53,16 @@ pacman –S git patch unzip
 - `InstallDefaultDeps`：安装默认版本的编译工具
 
 	需输入的参数
-- `BazelBuildParameter`：bazel编译参数，添加在""内，细节参阅 [tensorflow官方文档](https://tensorflow.google.cn/install/source_windows#gpu_support)
+- `BazelBuildParameter`：bazel编译参数，添加在 " " 内，细节参阅 [tensorflow官方文档](https://tensorflow.google.cn/install/source_windows#gpu_support)
 
 	```
 	(tf_test) (base) PS C:\build_tf>.\build.ps1 –BuildCppAPI –BazelBuildParameter “--config=opt --config=cuda --define=no_tensorflow_py_deps=true //tensorflow:libtensorflow_cc.so”
 	```
-	(*以上指令将编译C++ API的libtensorflow_cc.so*)
+
+	- 以上指令将编译C++ API的libtensorflow_cc.so
+	- 编译初始阶段会从github上下载多个第三方文件，需要能够翻墙的网络（挂载vpn后，移动网速较联通更快）
+	- 下载失败的package可以反复尝试，已下载的package无需重复下载
+	- 该脚本主要修改自 [`build.ps1`](https://github.com/guikarist/tensorflow-windows-build-script/blob/master/build.ps1)，可定期同步更新
 
 3. 经过较长时间的编译后，powershell将输出
 
