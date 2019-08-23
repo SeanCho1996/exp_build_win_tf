@@ -27,6 +27,6 @@ __gpu部分__
 * 发现eigen矩阵运算会占用cuda线程，kernel内部矩阵运算操作越多，可用的cuda线程就越少，解决方案为循环调用线程
 
 ## usefel url link
-[Eigen 官方网站](http://eigen.tuxfamily.org/index.php?title=Main_Page#Documentation)
-[Eigen unsupported module](http://eigen.tuxfamily.org/dox/unsupported/index.html)
-[Eigen operations (compare with Matlab)](https://blog.csdn.net/xuezhisdc/article/details/54645238)
+[Eigen 官方网站](http://eigen.tuxfamily.org/index.php?title=Main_Page#Documentation)</br>
+[Eigen unsupported module](http://eigen.tuxfamily.org/dox/unsupported/index.html)</br>
+[Eigen operations (compare with Matlab)](https://blog.csdn.net/xuezhisdc/article/details/54645238)</br>
